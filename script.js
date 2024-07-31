@@ -15,20 +15,35 @@ const result = document.getElementById('result');
 const gameCount = document.getElementById('count');
 let count = 0;
 
+const winningAudio = new Audio("win.mp3");
+const losingAudio = new Audio("lose.mp3");
+const boring = new Audio("boring.mp3")
+
 function compareRP(player){
-    let robot = Math.random() * 3 + 1;
+    let robot = Math.floor(Math.random() * 3 + 1);
     console.log("changes");
     changeRobot(robot);
     if(robot == 1 && player ==3 || robot>player){
-        lose();
+        rVal++;
+        rScore.textContent = rVal;
+        result.textContent = "You lost :(";
+        losingAudio.play();
     }
-    if(player == 1 && robot == 3 || player>robot){
-       win();
+    else if(player == 1 && robot == 3 || player>robot){
+        pVal++;
+        pScore.textContent = pVal;
+        result.textContent = "You WON!!";
+        winningAudio.play();
+    }
+    else{
+        result.textContent = "Draw!";
+        boring.play();
     }
     count++;
     gameCount.textContent = "Games Played: " + count;
 }
 function changeRobot(robot){
+    console.log("changes", robot);
     if(robot == 1){
         document.getElementById('rImg').src='./rock.jpg';
     }
@@ -40,16 +55,27 @@ function changeRobot(robot){
     }
 }
 
-function win(){
-    pVal++;
-    pScore.textContent = pVal;
-    result.textContent = "You WON!!";
-}
-function lose(){
-    rVal++;
-    rScore.textContent = rVal;
-    result.textContent = "You lost :(";
-}
-function draw(){
-    result.textContent = "Draw!";
-}
+const rRockBtn = document.getElementById('rock');
+rRockBtn.addEventListener('click', function(){
+    document.getElementById('pImg').src='./rock.jpg'
+    setTimeout(() => {
+        compareRP(1)
+    }, 1000);
+
+})
+
+const rPaperBtn = document.getElementById('paper');
+rPaperBtn.addEventListener('click', function(){
+    document.getElementById('pImg').src='./paper.jpg'
+    setTimeout(() =>{
+        compareRP(2)
+    }, 1000);
+})
+
+const rScissorsBtn = document.getElementById('scissors');
+rScissorsBtn.addEventListener('click', function(){
+    document.getElementById('pImg').src='./scissors.jpg'
+    setTimeout(() => {
+        compareRP(3)
+    }, 1000);
+});

@@ -6,6 +6,7 @@ body{
     color: rgb(238, 110, 131);
     font-size: 50px;
     text-align: center;
+
 }
 #board{
     display: flex;
@@ -48,10 +49,16 @@ body{
 #pImg{
     height: 300px;
     width: 40%;
+    animation-name: zoom-in-zoom-out;
+    animation-duration: 1000;
+    animation-iteration-count: 3;
 }
 #rImg{
     height: 300px;
     width: 40%;
+    animation-name: zoom-in-zoom-out;
+    animation-duration: 1000;
+    animation-iteration-count: 3;
 }
 #rock{
     background-color: white;
@@ -91,3 +98,15 @@ body{
     }
 
 }   
+
+@keyframes zoom-in-zoom-out {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.5, 1.5);
+    }
+    100% {
+      transform: scale(1, 1);
+    }
+  }
