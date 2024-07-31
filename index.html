@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <script type="module" src="./script.js"></script>
+    
+    <h1 id="title">Rock Paper Scissors</h1>
+    <div id="board">
+        <div id="score">
+            <h3>Score:</h3>
+            <div style="display: flex">
+                <div id="player">
+                    <h5>Player: </h5>
+                    <h3 id="pScore"></h3>
+                </div>
+                <div id="robot">
+                    <h5>Robot: </h5>
+                    <h3 id="rScore"></h3>
+                </div>      
+            </div>
+        </div>
+        <div id="images">
+            <img src="./empty.jpg" id="pImg">
+            <img src="./empty.jpg" id="rImg">
+        </div>
+        <div id="buttons">
+            <button id="rock" onclick="document.getElementById('pImg').src='./rock.jpg'; compareRP(1)">Rock</button>
+            <button id="paper" onclick="document.getElementById('pImg').src='./paper.jpg'; compareRP(2)">Paper</button>
+            <button id="scissors" onclick="document.getElementById('pImg').src='./scissors.jpg'; compareRP(3)">Scissors</button>
+        </div>
+        <h4 id="result"></h4>
+        <div id="count"></div>
+    </div>
+</body>
+</html>
